@@ -1,0 +1,7 @@
+fastapi==0.115.0
+pymongo==4.10.1
+pyTelegramBotAPI==4.23.0
+python-dotenv==1.0.1
+python-multipart==0.0.12
+python-telegram-bot==21.3
+markdown-it-py
