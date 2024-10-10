@@ -3,11 +3,12 @@ import logging
 from telegram import Update
 from telegram.ext import ContextTypes
 import os
+import re
 
-from apps.amocrm.amocrm_integration import handle_customer_info
-from apps.mongodb.connection import get_collection
+from src.apps.amocrm.amocrm_integration import handle_customer_info
+from src.apps.mongodb.connection import get_collection
 
-from apps.rag.rag_model_endpoint import rag_model_endpoint, QueryRequest, Message
+from src.apps.rag.rag_model_endpoint import rag_model_endpoint, QueryRequest, Message
 
 
 # ======== Logging configuration ========
@@ -55,9 +56,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         # ======== Extract the response text ========
         response_text = rag_response['response']
 
-        # ====== Remove the LEAD_CAPTURED flag from the response (needed to send clean response to User) ======
-        response_text = response_text.split("LEAD_CAPTURED:")[0].strip()
-
+        # ======== Remove any occurrence of "LEAD_CAPTURED" or "LEAD_CAPTURED: ..." from the response ========
+        # ======== (needed to send clean response to User) ========
+        response_text = re.sub(r'LEAD_CAPTURED(:.*?(\[.*?\])?)?$', '', response_text).strip()
 
         # ==== Handle customer info if it's part of the response (Required to send the client data to amocrm) ====
         await handle_customer_info(rag_response)

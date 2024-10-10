@@ -8,9 +8,11 @@ from telegram.ext import (
 )
 
 # Add the project root directory to the Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from apps.telegram.bot import handle_message
+dotenv.load_dotenv(dotenv.find_dotenv())
+
+from src.apps.telegram.bot import handle_message
 
 # Load environment variables
 dotenv.load_dotenv()

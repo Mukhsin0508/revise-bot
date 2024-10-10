@@ -1,12 +1,11 @@
 # ===== Imports =====
-import os
 import json
 import requests
 import logging
 from pydantic import BaseModel
 from typing import List, Optional
 from fastapi import HTTPException
-from config import settings
+from src.config import settings
 
 # ===== Logging configuration =====
 logging.basicConfig(level=logging.INFO)
