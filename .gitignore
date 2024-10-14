@@ -6,6 +6,7 @@
 ### dotenv ###
 .env
 venv-revite
+src/apps/telegram/sample_update.json
 
 ### Python caches
 __pycache__
