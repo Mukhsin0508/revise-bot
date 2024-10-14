@@ -13,6 +13,3 @@ PROD_URL = os.getenv("PROD_URL")
 # Set the environment variable (development by default)
 ENV = os.getenv('ENV')
 RAG_MODEL_URL = DEV_URL if ENV == 'development' else PROD_URL
-
-# Telegram bot token
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")

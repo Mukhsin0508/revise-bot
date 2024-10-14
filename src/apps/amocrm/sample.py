@@ -31,7 +31,7 @@ def send_data_to_amocrm(customer_info) -> Dict[str, str]:
             storage=tokens.FileTokensStorage()
             )
         # Uncomment the next line if you need to initialize with AUTH_CODE
-        # tokens.default_token_manager.init(code=AUTH_CODE, skip_error=True)
+        tokens.default_token_manager.init(code=AUTH_CODE, skip_error=True)
         logger.info("Token initialization successful.")
     except Exception as e:
         logger.error(f"Error during token initialization: {str(e)}")
